@@ -135,7 +135,7 @@ function createSearchStream(searchIndex, geocodeType) {
     // Make rate limit more for just not crashing Elasticsearch
     setTimeout(function () {
       next(null);
-    }, 50);
+    }, 100);
 
   },
   // don't flush the stream until the last in flight request has been handled

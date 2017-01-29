@@ -17,7 +17,7 @@ function search(params, progressCallback, endCallback) {
 
   var stream = fs.createReadStream(params.inputFile)
     .pipe(csvStream.read())
-    .pipe(searchStream(params.geocodeType))
+    .pipe(searchStream(params.searchIndex, params.geocodeType))
     .pipe(spy.obj(function () {
       processedSize++;
     }))
