@@ -5,7 +5,7 @@ var spy = require('through2-spy');
 
 
 function search(params, progressCallback, endCallback) {
-  if (!params.inputFile || !params.outputFile || !params.queryParams) {
+  if (!params.inputFile || !params.outputFile) {
     throw new Error('Invalid parameters! Please provide input file, output file, and Mapzen Search API key');
   }
 
@@ -17,7 +17,7 @@ function search(params, progressCallback, endCallback) {
 
   var stream = fs.createReadStream(params.inputFile)
     .pipe(csvStream.read())
-    .pipe(searchStream(params.queryParams))
+    .pipe(searchStream(params.geocodeType))
     .pipe(spy.obj(function () {
       processedSize++;
     }))
@@ -31,4 +31,3 @@ function search(params, progressCallback, endCallback) {
 }
 
 module.exports = search;
-

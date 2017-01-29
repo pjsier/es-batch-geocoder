@@ -6,10 +6,9 @@ var colors = require('colors');
 var params = {
   inputFile: process.argv[2] || 'test/input.csv',
   outputFile: process.argv[3] || 'output.csv',
-  queryParams: process.argv[4] || 'test/queryParams.json'
+  searchIndex: process.argv[4] || 'census',
+  geocodeType: process.argv[5] || 'census'
 };
-
-params.queryParams = JSON.parse(fs.readFileSync(params.queryParams));
 
 search(
   params,
